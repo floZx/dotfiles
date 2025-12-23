@@ -17,6 +17,7 @@ chmod +x install.sh
 - Tmux
 - Une police Nerd Font (ex: `brew install --cask font-hack-nerd-font`)
 - ripgrep pour Telescope (`brew install ripgrep`)
+- debugpy pour le debugger Python (`pip install debugpy`)
 
 ## Mise à jour
 
@@ -101,6 +102,9 @@ Les symlinks pointent vers ce dépôt, donc les changements sont appliqués auto
 | Raccourci | Action |
 |-----------|--------|
 | `Ctrl+h/j/k/l` | Naviguer entre splits nvim/tmux |
+| `Ctrl+w gF` | Ouvrir fichier:ligne sous curseur en split vertical |
+| `Ctrl+o` | Retour en arrière (jumplist) |
+| `Ctrl+i` | Avancer (jumplist) |
 
 ### Notes (~/notes)
 
@@ -113,8 +117,25 @@ Les symlinks pointent vers ce dépôt, donc les changements sont appliqués auto
 | `Space n b` | Parcourir ~/notes |
 
 **Dans les fichiers markdown :**
-- `[[` pour créer un lien vers une autre note
+- `[[` pour créer un lien vers une autre note (autocomplétion)
 - `gf` sur un lien `[[note]]` pour l'ouvrir
+- `Ctrl+o` pour revenir à la note précédente
+
+### Debugger (Python/Django)
+
+| Raccourci | Action |
+|-----------|--------|
+| `Space d b` | Toggle breakpoint |
+| `Space d c` | Continuer / Lancer debug |
+| `Space d o` | Step over |
+| `Space d i` | Step into |
+| `Space d O` | Step out |
+| `Space d u` | Toggle UI debug |
+| `Space d x` | Arrêter debug |
+| `Space d r` | Ouvrir REPL |
+| `Space d l` | Relancer dernier debug |
+
+Pour Django : `Space d c` → choisir "Django"
 
 ---
 
@@ -166,8 +187,11 @@ Doom One (cohérent avec iTerm2)
 - **diffview.nvim** - Historique et diffs visuels
 - **gitsigns.nvim** - Indicateurs git dans la marge
 - **nvim-web-devicons** - Icônes
-- **obsidian.nvim** - Gestion des notes markdown
-- **render-markdown.nvim** - Rendu markdown joli (`:RenderMarkdown toggle` pour activer/désactiver)
+- **obsidian.nvim** - Gestion des notes markdown (liens `[[`, recherche)
+- **markview.nvim** - Rendu markdown coloré (headings, tableaux)
+- **nvim-treesitter-context** - Affiche fonction/classe courante en haut
+- **nvim-cmp** - Autocomplétion (liens obsidian, paths, buffer)
+- **nvim-dap** + **nvim-dap-ui** - Debugger Python/Django
 - **which-key.nvim** - Affiche les raccourcis disponibles (tape Space et attends)
 - **nvim-autopairs** - Ferme auto les parenthèses, crochets, guillemets
 - **Comment.nvim** - Commenter avec `gcc` (ligne) ou `gc` (sélection)
