@@ -245,3 +245,22 @@ vim.keymap.set("n", "<leader>gl", ":Git log %<CR>", { desc = "Git log fichier" }
 vim.keymap.set("n", "<leader>gs", ":Git<CR>", { desc = "Git status" })
 vim.keymap.set("n", "<leader>gB", builtin.git_branches, { desc = "Changer de branche" })
 
+-- Copier chemin:ligne dans le presse-papier
+vim.keymap.set("n", "<leader>yp", function()
+  local path = vim.fn.expand("%")
+  local line = vim.fn.line(".")
+  local result = path .. ":" .. line
+  vim.fn.setreg("+", result)
+  print("Copié: " .. result)
+end, { desc = "Copier chemin:ligne" })
+
+vim.keymap.set("v", "<leader>yp", function()
+  local path = vim.fn.expand("%")
+  local start_line = vim.fn.line("v")
+  local end_line = vim.fn.line(".")
+  if start_line > end_line then start_line, end_line = end_line, start_line end
+  local result = path .. ":" .. start_line .. "-" .. end_line
+  vim.fn.setreg("+", result)
+  print("Copié: " .. result)
+end, { desc = "Copier chemin:lignes" })
+
