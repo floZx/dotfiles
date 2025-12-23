@@ -169,6 +169,7 @@ Doom One (cohérent avec iTerm2)
 - **nvim-autopairs** - Ferme auto les parenthèses, crochets, guillemets
 - **Comment.nvim** - Commenter avec `gcc` (ligne) ou `gc` (sélection)
 - **nvim-surround** - Entourer une sélection avec `S"`, `S(`, etc.
+- **lualine.nvim** - Barre de statut (mode, branche git, fichier, position)
 
 ## Surround (entourer du texte)
 
