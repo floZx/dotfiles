@@ -18,8 +18,6 @@ vim.opt.ttimeoutlen = 5
 vim.opt.autoread = true
 vim.opt.hidden = true  -- Permet de changer de buffer sans sauvegarder
 
--- Undo persistant (garder l'historique après fermeture)
-vim.opt.undofile = true
 vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold" }, {
   command = "checktime",
 })
