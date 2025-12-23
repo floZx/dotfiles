@@ -55,6 +55,16 @@ require("lazy").setup({
     end,
   },
 
+  -- Contexte sticky (affiche fonction/classe en haut quand on scrolle)
+  { "nvim-treesitter/nvim-treesitter-context",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    config = function()
+      require("treesitter-context").setup({
+        max_lines = 3,
+      })
+    end,
+  },
+
   -- Navigation tmux <-> nvim avec Ctrl+hjkl
   { "christoomey/vim-tmux-navigator" },
 
