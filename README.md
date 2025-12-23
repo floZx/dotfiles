@@ -80,6 +80,7 @@ Les symlinks pointent vers ce dépôt, donc les changements sont appliqués auto
 | `Space g l` | Git log du fichier (texte) |
 | `Space g b` | Git blame |
 | `Space g B` | Changer de branche (fuzzy) |
+| `Space y p` | Copier chemin:ligne dans le presse-papier |
 | `Space g s` | Git status |
 | `Space g d` | Diff des changements en cours |
 | `Space g c` | Fermer la vue diff |
