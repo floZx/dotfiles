@@ -168,3 +168,17 @@ Doom One (cohérent avec iTerm2)
 - **which-key.nvim** - Affiche les raccourcis disponibles (tape Space et attends)
 - **nvim-autopairs** - Ferme auto les parenthèses, crochets, guillemets
 - **Comment.nvim** - Commenter avec `gcc` (ligne) ou `gc` (sélection)
+- **nvim-surround** - Entourer une sélection avec `S"`, `S(`, etc.
+
+## Surround (entourer du texte)
+
+**En mode visuel :**
+- Sélectionne du texte
+- `S"` → entoure de `"`
+- `S(` → entoure de `()`
+- `S{` → entoure de `{}`
+
+**En mode normal :**
+- `ysiw"` → entoure le mot de `"`
+- `cs"'` → change `"` en `'`
+- `ds"` → supprime les `"`

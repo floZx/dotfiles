@@ -163,6 +163,14 @@ require("lazy").setup({
       require("Comment").setup({})
     end,
   },
+
+  -- Surround (entourer une sélection)
+  { "kylechui/nvim-surround",
+    event = "VeryLazy",
+    config = function()
+      require("nvim-surround").setup({})
+    end,
+  },
 })
 
 -- Appliquer le thème
