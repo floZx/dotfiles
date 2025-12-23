@@ -215,6 +215,39 @@ require("lazy").setup({
     end,
   },
 
+  -- Debugger (comme VSCode)
+  { "mfussenegger/nvim-dap",
+    dependencies = {
+      "rcarriga/nvim-dap-ui",
+      "nvim-neotest/nvim-nio",
+      "mfussenegger/nvim-dap-python",
+    },
+    config = function()
+      local dap = require("dap")
+      local dapui = require("dapui")
+
+      -- UI
+      dapui.setup()
+      dap.listeners.after.event_initialized["dapui_config"] = function() dapui.open() end
+      dap.listeners.before.event_terminated["dapui_config"] = function() dapui.close() end
+      dap.listeners.before.event_exited["dapui_config"] = function() dapui.close() end
+
+      -- Python (utilise debugpy)
+      require("dap-python").setup("python")
+
+      -- Config Django
+      table.insert(dap.configurations.python, {
+        type = "python",
+        request = "launch",
+        name = "Django",
+        program = "${workspaceFolder}/manage.py",
+        args = { "runserver", "--noreload" },
+        django = true,
+        justMyCode = false,
+      })
+    end,
+  },
+
   -- Autocomplétion (pour liens obsidian [[, tags #, etc.)
   { "hrsh7th/nvim-cmp",
     dependencies = {
@@ -323,4 +356,15 @@ end, { desc = "Copier chemin:lignes" })
 
 -- Ouvrir fichier sous curseur en split vertical
 vim.keymap.set("n", "<C-w>gF", ":vertical wincmd F<CR>", { desc = "Ouvrir fichier:ligne en split vertical" })
+
+-- Debugger
+vim.keymap.set("n", "<leader>db", function() require("dap").toggle_breakpoint() end, { desc = "Toggle breakpoint" })
+vim.keymap.set("n", "<leader>dc", function() require("dap").continue() end, { desc = "Continue/Start debug" })
+vim.keymap.set("n", "<leader>do", function() require("dap").step_over() end, { desc = "Step over" })
+vim.keymap.set("n", "<leader>di", function() require("dap").step_into() end, { desc = "Step into" })
+vim.keymap.set("n", "<leader>dO", function() require("dap").step_out() end, { desc = "Step out" })
+vim.keymap.set("n", "<leader>dr", function() require("dap").repl.open() end, { desc = "Open REPL" })
+vim.keymap.set("n", "<leader>dl", function() require("dap").run_last() end, { desc = "Run last" })
+vim.keymap.set("n", "<leader>du", function() require("dapui").toggle() end, { desc = "Toggle debug UI" })
+vim.keymap.set("n", "<leader>dx", function() require("dap").terminate() end, { desc = "Terminate debug" })
 
