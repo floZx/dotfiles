@@ -172,6 +172,17 @@ Doom One (cohérent avec iTerm2)
 - **Comment.nvim** - Commenter avec `gcc` (ligne) ou `gc` (sélection)
 - **nvim-surround** - Entourer une sélection avec `S"`, `S(`, etc.
 - **lualine.nvim** - Barre de statut (mode, branche git, fichier, position)
+- **harpoon** - Bookmarks persistants par projet
+
+## Bookmarks (Harpoon)
+
+| Raccourci | Action |
+|-----------|--------|
+| `Space h a` | Ajouter le fichier aux bookmarks |
+| `Space h h` | Ouvrir la liste des bookmarks |
+| `Space 1/2/3/4` | Aller au bookmark 1/2/3/4 |
+
+Les bookmarks sont persistants par projet (sauvegardés automatiquement).
 
 ## Surround (entourer du texte)
 
