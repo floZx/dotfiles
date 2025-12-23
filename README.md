@@ -32,13 +32,136 @@ Les symlinks pointent vers ce dépôt, donc les changements sont appliqués auto
 - `nvim/init.lua` - Configuration Neovim avec lazy.nvim
 - `tmux/.tmux.conf` - Configuration Tmux
 
-## Plugins Neovim
+---
 
-- doom-one.vim (thème)
-- nvim-treesitter (coloration syntaxique)
-- telescope.nvim (fuzzy finder)
-- neo-tree.nvim (explorateur fichiers)
-- vim-tmux-navigator (navigation)
-- vim-fugitive + diffview + gitsigns (git)
-- obsidian.nvim (notes)
-- render-markdown.nvim (markdown joli)
+# Raccourcis Neovim & Tmux
+
+## Neovim
+
+### Recherche (Telescope)
+
+| Raccourci | Action |
+|-----------|--------|
+| `Space p` | Rechercher fichiers (fuzzy, comme Cmd+P) |
+| `Space f` | Rechercher dans le contenu (grep) |
+| `Space F` | Rechercher le mot sous le curseur |
+| `Space b` | Buffers ouverts |
+| `Space r` | Fichiers récents |
+| `Space Space` | Reprendre la dernière recherche |
+
+**Dans les résultats Telescope :**
+- `↑/↓` ou `Ctrl+n/p` pour naviguer
+- `Enter` pour ouvrir
+- `Ctrl+v` ouvrir en split vertical
+- `Ctrl+x` ouvrir en split horizontal
+- `Esc` pour fermer
+
+### Arborescence (Neo-tree)
+
+| Raccourci | Action |
+|-----------|--------|
+| `Space e` | Ouvrir/fermer l'explorateur |
+| `Space o` | Focus sur l'explorateur |
+
+**Dans l'arborescence :**
+- `Enter` ouvrir fichier
+- `a` créer fichier/dossier
+- `d` supprimer
+- `r` renommer
+- `c` copier
+- `m` déplacer
+- `?` aide
+
+### Git
+
+| Raccourci | Action |
+|-----------|--------|
+| `Space g h` | Historique du fichier (vue graphique) |
+| `Space g l` | Git log du fichier (texte) |
+| `Space g b` | Git blame |
+| `Space g d` | Diff des changements en cours |
+| `Space g c` | Fermer la vue diff |
+
+### Redimensionnement splits
+
+| Raccourci | Action |
+|-----------|--------|
+| `Space w h` | Réduire largeur |
+| `Space w l` | Agrandir largeur |
+| `Space w j` | Réduire hauteur |
+| `Space w k` | Agrandir hauteur |
+| `Space w =` | Égaliser les splits |
+| `Space w m` | Maximiser (fermer autres splits) |
+
+### Navigation
+
+| Raccourci | Action |
+|-----------|--------|
+| `Ctrl+h/j/k/l` | Naviguer entre splits nvim/tmux |
+
+### Notes (~/notes)
+
+| Raccourci | Action |
+|-----------|--------|
+| `Space n n` | Nouvelle note |
+| `Space n f` | Chercher une note (fuzzy) |
+| `Space n s` | Chercher dans le contenu des notes |
+| `Space n t` | Note du jour (daily note) |
+| `Space n b` | Parcourir ~/notes |
+
+**Dans les fichiers markdown :**
+- `[[` pour créer un lien vers une autre note
+- `gf` sur un lien `[[note]]` pour l'ouvrir
+
+---
+
+## Tmux
+
+### Général
+
+| Raccourci | Action |
+|-----------|--------|
+| `Ctrl+a` ou `Ctrl+b` | Préfixe tmux |
+| `Ctrl+a r` | Recharger la config |
+
+### Panes
+
+| Raccourci | Action |
+|-----------|--------|
+| `Ctrl+a \|` | Split vertical |
+| `Ctrl+a -` | Split horizontal |
+| `Ctrl+h/j/k/l` | Naviguer entre panes (fonctionne aussi dans nvim) |
+| `Ctrl+a z` | Zoom/unzoom le pane (plein écran) |
+| `Ctrl+a Space` | Cycle entre les layouts |
+
+### Redimensionnement panes
+
+| Raccourci | Action |
+|-----------|--------|
+| `Ctrl+a H` | Agrandir vers la gauche |
+| `Ctrl+a J` | Agrandir vers le bas |
+| `Ctrl+a K` | Agrandir vers le haut |
+| `Ctrl+a L` | Agrandir vers la droite |
+| `Ctrl+a =` | Égaliser horizontalement |
+| `Ctrl+a +` | Égaliser verticalement |
+
+---
+
+## Thème
+
+Doom One (cohérent avec iTerm2)
+
+## Plugins Neovim installés
+
+- **lazy.nvim** - Gestionnaire de plugins
+- **doom-one.vim** - Thème
+- **nvim-treesitter** - Coloration syntaxique avancée
+- **telescope.nvim** - Fuzzy finder
+- **neo-tree.nvim** - Explorateur de fichiers
+- **vim-tmux-navigator** - Navigation entre nvim et tmux
+- **vim-fugitive** - Commandes git
+- **diffview.nvim** - Historique et diffs visuels
+- **gitsigns.nvim** - Indicateurs git dans la marge
+- **nvim-web-devicons** - Icônes
+- **obsidian.nvim** - Gestion des notes markdown
+- **render-markdown.nvim** - Rendu markdown joli (`:RenderMarkdown toggle` pour activer/désactiver)
