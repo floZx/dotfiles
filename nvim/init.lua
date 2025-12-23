@@ -356,6 +356,9 @@ vim.keymap.set("n", "<leader>F", builtin.grep_string, { desc = "Rechercher mot s
 vim.keymap.set("n", "<leader>b", builtin.buffers, { desc = "Buffers ouverts" })
 vim.keymap.set("n", "<leader>r", builtin.oldfiles, { desc = "Fichiers récents" })
 vim.keymap.set("n", "<leader><leader>", builtin.resume, { desc = "Reprendre dernière recherche" })
+vim.keymap.set("n", "<leader>s", function()
+  builtin.lsp_document_symbols({ default_text = "'" })
+end, { desc = "Symbols (classes/fonctions)" })
 
 -- Arborescence
 vim.keymap.set("n", "<leader>e", ":Neotree toggle<CR>", { desc = "Explorateur fichiers" })

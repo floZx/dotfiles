@@ -49,6 +49,7 @@ Les symlinks pointent vers ce dépôt, donc les changements sont appliqués auto
 | `Space b` | Buffers ouverts |
 | `Space r` | Fichiers récents |
 | `Space Space` | Reprendre la dernière recherche |
+| `Space s` | Symbols du fichier (classes/fonctions) - matching exact |
 
 **Dans les résultats Telescope :**
 - `↑/↓` ou `Ctrl+n/p` pour naviguer
