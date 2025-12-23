@@ -65,6 +65,54 @@ require("lazy").setup({
     end,
   },
 
+  -- LSP (erreurs, diagnostics, go-to-definition)
+  { "neovim/nvim-lspconfig",
+    dependencies = {
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
+    },
+    config = function()
+      require("mason").setup()
+      require("mason-lspconfig").setup({
+        ensure_installed = { "pyright", "ts_ls", "lua_ls" },
+      })
+
+      local lspconfig = require("lspconfig")
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+      -- Python
+      lspconfig.pyright.setup({ capabilities = capabilities })
+
+      -- TypeScript/JavaScript
+      lspconfig.ts_ls.setup({ capabilities = capabilities })
+
+      -- Lua
+      lspconfig.lua_ls.setup({
+        capabilities = capabilities,
+        settings = {
+          Lua = {
+            diagnostics = { globals = { "vim" } },
+          },
+        },
+      })
+
+      -- Raccourcis LSP
+      vim.api.nvim_create_autocmd("LspAttach", {
+        callback = function(args)
+          local opts = { buffer = args.buf }
+          vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+          vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+          vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+          vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+          vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+          vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+          vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+          vim.keymap.set("n", "<leader>D", vim.diagnostic.open_float, opts)
+        end,
+      })
+    end,
+  },
+
   -- Navigation tmux <-> nvim avec Ctrl+hjkl
   { "christoomey/vim-tmux-navigator" },
 
@@ -248,9 +296,10 @@ require("lazy").setup({
     end,
   },
 
-  -- Autocomplétion (pour liens obsidian [[, tags #, etc.)
+  -- Autocomplétion
   { "hrsh7th/nvim-cmp",
     dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
     },
@@ -265,6 +314,7 @@ require("lazy").setup({
           ["<C-e>"] = cmp.mapping.abort(),
         }),
         sources = cmp.config.sources({
+          { name = "nvim_lsp" },
           { name = "obsidian" },
           { name = "path" },
           { name = "buffer" },
