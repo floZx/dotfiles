@@ -165,3 +165,6 @@ Doom One (cohérent avec iTerm2)
 - **nvim-web-devicons** - Icônes
 - **obsidian.nvim** - Gestion des notes markdown
 - **render-markdown.nvim** - Rendu markdown joli (`:RenderMarkdown toggle` pour activer/désactiver)
+- **which-key.nvim** - Affiche les raccourcis disponibles (tape Space et attends)
+- **nvim-autopairs** - Ferme auto les parenthèses, crochets, guillemets
+- **Comment.nvim** - Commenter avec `gcc` (ligne) ou `gc` (sélection)

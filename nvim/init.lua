@@ -16,6 +16,10 @@ vim.opt.ttimeoutlen = 5
 
 -- Recharger automatiquement les fichiers modifiés
 vim.opt.autoread = true
+vim.opt.hidden = true  -- Permet de changer de buffer sans sauvegarder
+
+-- Undo persistant (garder l'historique après fermeture)
+vim.opt.undofile = true
 vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold" }, {
   command = "checktime",
 })
@@ -136,6 +140,29 @@ require("lazy").setup({
       require("gitsigns").setup({
         current_line_blame = false, -- activer avec :Gitsigns toggle_current_line_blame
       })
+    end,
+  },
+
+  -- Which-key (affiche les raccourcis disponibles)
+  { "folke/which-key.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("which-key").setup({})
+    end,
+  },
+
+  -- Autopairs (ferme auto les parenthèses, etc.)
+  { "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    config = function()
+      require("nvim-autopairs").setup({})
+    end,
+  },
+
+  -- Comment (gcc pour commenter)
+  { "numToStr/Comment.nvim",
+    config = function()
+      require("Comment").setup({})
     end,
   },
 })
