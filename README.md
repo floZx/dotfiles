@@ -121,6 +121,20 @@ Les symlinks pointent vers ce dépôt, donc les changements sont appliqués auto
 - `gf` sur un lien `[[note]]` pour l'ouvrir
 - `Ctrl+o` pour revenir à la note précédente
 
+### LSP (erreurs, autocomplétion)
+
+| Raccourci | Action |
+|-----------|--------|
+| `gd` | Go to definition |
+| `gr` | Références |
+| `K` | Documentation hover |
+| `Space c a` | Code actions |
+| `Space r n` | Rename |
+| `[d` / `]d` | Erreur précédente/suivante |
+| `Space D` | Détails de l'erreur |
+
+`:Mason` pour gérer les serveurs LSP installés.
+
 ### Debugger (Python/Django)
 
 | Raccourci | Action |
@@ -192,6 +206,7 @@ Doom One (cohérent avec iTerm2)
 - **nvim-treesitter-context** - Affiche fonction/classe courante en haut
 - **nvim-cmp** - Autocomplétion (liens obsidian, paths, buffer)
 - **nvim-dap** + **nvim-dap-ui** - Debugger Python/Django
+- **nvim-lspconfig** + **mason.nvim** - LSP (erreurs, autocomplétion, go-to-definition)
 - **which-key.nvim** - Affiche les raccourcis disponibles (tape Space et attends)
 - **nvim-autopairs** - Ferme auto les parenthèses, crochets, guillemets
 - **Comment.nvim** - Commenter avec `gcc` (ligne) ou `gc` (sélection)
