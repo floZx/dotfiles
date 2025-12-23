@@ -172,12 +172,14 @@ require("lazy").setup({
     end,
   },
 
-  -- Harpoon (bookmarks persistants)
-  { "ThePrimeagen/harpoon",
-    branch = "harpoon2",
-    dependencies = { "nvim-lua/plenary.nvim" },
+  -- Marks (bookmarks persistants avec positions)
+  { "chentoast/marks.nvim",
     config = function()
-      require("harpoon"):setup()
+      require("marks").setup({
+        default_mappings = true,
+        signs = true,
+        mappings = {}
+      })
     end,
   },
 
@@ -243,11 +245,3 @@ vim.keymap.set("n", "<leader>gl", ":Git log %<CR>", { desc = "Git log fichier" }
 vim.keymap.set("n", "<leader>gs", ":Git<CR>", { desc = "Git status" })
 vim.keymap.set("n", "<leader>gB", builtin.git_branches, { desc = "Changer de branche" })
 
--- Harpoon (bookmarks)
-local harpoon = require("harpoon")
-vim.keymap.set("n", "<leader>ha", function() harpoon:list():add() end, { desc = "Ajouter bookmark" })
-vim.keymap.set("n", "<leader>hh", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc = "Liste bookmarks" })
-vim.keymap.set("n", "<leader>1", function() harpoon:list():select(1) end, { desc = "Bookmark 1" })
-vim.keymap.set("n", "<leader>2", function() harpoon:list():select(2) end, { desc = "Bookmark 2" })
-vim.keymap.set("n", "<leader>3", function() harpoon:list():select(3) end, { desc = "Bookmark 3" })
-vim.keymap.set("n", "<leader>4", function() harpoon:list():select(4) end, { desc = "Bookmark 4" })
