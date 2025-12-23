@@ -89,11 +89,29 @@ require("lazy").setup({
   },
 
   -- Markdown joli
-  { "MeanderingProgrammer/render-markdown.nvim",
-    ft = "markdown",
+  { "OXY2DEV/markview.nvim",
+    lazy = false,
     dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
     config = function()
-      require("render-markdown").setup({})
+      -- Couleurs personnalisées pour les headings (style Catppuccin)
+      vim.api.nvim_set_hl(0, "MarkviewHeading1", { bg = "#453a50", fg = "#f38ba8", bold = true })
+      vim.api.nvim_set_hl(0, "MarkviewHeading2", { bg = "#3a4550", fg = "#fab387", bold = true })
+      vim.api.nvim_set_hl(0, "MarkviewHeading3", { bg = "#3a5045", fg = "#a6e3a1", bold = true })
+      vim.api.nvim_set_hl(0, "MarkviewHeading4", { bg = "#3a4555", fg = "#89b4fa", bold = true })
+      vim.api.nvim_set_hl(0, "MarkviewHeading5", { bg = "#4a3a55", fg = "#cba6f7", bold = true })
+      vim.api.nvim_set_hl(0, "MarkviewHeading6", { bg = "#553a4a", fg = "#f5c2e7", bold = true })
+
+      require("markview").setup({
+        headings = {
+          enable = true,
+          heading_1 = { style = "label", hl = "MarkviewHeading1" },
+          heading_2 = { style = "label", hl = "MarkviewHeading2" },
+          heading_3 = { style = "label", hl = "MarkviewHeading3" },
+          heading_4 = { style = "label", hl = "MarkviewHeading4" },
+          heading_5 = { style = "label", hl = "MarkviewHeading5" },
+          heading_6 = { style = "label", hl = "MarkviewHeading6" },
+        },
+      })
     end,
   },
 
@@ -101,7 +119,7 @@ require("lazy").setup({
   { "epwalsh/obsidian.nvim",
     version = "*",
     lazy = false,
-    dependencies = { "nvim-lua/plenary.nvim" },
+    dependencies = { "nvim-lua/plenary.nvim", "hrsh7th/nvim-cmp" },
     config = function()
       require("obsidian").setup({
         workspaces = {
@@ -109,6 +127,10 @@ require("lazy").setup({
         },
         disable_frontmatter = true,
         ui = { enable = false },
+        completion = {
+          nvim_cmp = true,
+          min_chars = 2,
+        },
       })
     end,
   },
@@ -179,6 +201,31 @@ require("lazy").setup({
         default_mappings = true,
         signs = true,
         mappings = {}
+      })
+    end,
+  },
+
+  -- Autocomplétion (pour liens obsidian [[, tags #, etc.)
+  { "hrsh7th/nvim-cmp",
+    dependencies = {
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+    },
+    config = function()
+      local cmp = require("cmp")
+      cmp.setup({
+        mapping = cmp.mapping.preset.insert({
+          ["<C-n>"] = cmp.mapping.select_next_item(),
+          ["<C-p>"] = cmp.mapping.select_prev_item(),
+          ["<CR>"] = cmp.mapping.confirm({ select = true }),
+          ["<C-Space>"] = cmp.mapping.complete(),
+          ["<C-e>"] = cmp.mapping.abort(),
+        }),
+        sources = cmp.config.sources({
+          { name = "obsidian" },
+          { name = "path" },
+          { name = "buffer" },
+        }),
       })
     end,
   },
@@ -263,4 +310,7 @@ vim.keymap.set("v", "<leader>yp", function()
   vim.fn.setreg("+", result)
   print("Copié: " .. result)
 end, { desc = "Copier chemin:lignes" })
+
+-- Ouvrir fichier sous curseur en split vertical
+vim.keymap.set("n", "<C-w>gF", ":vertical wincmd F<CR>", { desc = "Ouvrir fichier:ligne en split vertical" })
 
