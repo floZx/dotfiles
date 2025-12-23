@@ -231,3 +231,5 @@ vim.keymap.set("n", "<leader>gd", ":DiffviewOpen<CR>", { desc = "Diff working tr
 vim.keymap.set("n", "<leader>gc", ":DiffviewClose<CR>", { desc = "Fermer diffview" })
 vim.keymap.set("n", "<leader>gb", ":Git blame<CR>", { desc = "Git blame" })
 vim.keymap.set("n", "<leader>gl", ":Git log %<CR>", { desc = "Git log fichier" })
+vim.keymap.set("n", "<leader>gs", ":Git<CR>", { desc = "Git status" })
+vim.keymap.set("n", "<leader>gB", builtin.git_branches, { desc = "Changer de branche" })
