@@ -14,6 +14,12 @@ vim.opt.scrolloff = 8
 -- Intégration tmux
 vim.opt.ttimeoutlen = 5
 
+-- Recharger automatiquement les fichiers modifiés
+vim.opt.autoread = true
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold" }, {
+  command = "checktime",
+})
+
 -- Leader key
 vim.g.mapleader = " "
 
