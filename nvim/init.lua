@@ -347,6 +347,14 @@ require("lazy").setup({
 -- Appliquer le thème
 vim.cmd.colorscheme("doom-one")
 
+-- Couleurs Neo-tree (dossiers bleus, fichiers blancs)
+vim.api.nvim_set_hl(0, "NeoTreeDirectoryIcon", { fg = "#51afef" })
+vim.api.nvim_set_hl(0, "NeoTreeDirectoryName", { fg = "#51afef" })
+vim.api.nvim_set_hl(0, "NeoTreeFileName", { fg = "#bbc2cf" })
+vim.api.nvim_set_hl(0, "NeoTreeGitModified", { fg = "#ECBE7B" })
+vim.api.nvim_set_hl(0, "NeoTreeGitAdded", { fg = "#98be65" })
+vim.api.nvim_set_hl(0, "NeoTreeGitDeleted", { fg = "#ff6c6b" })
+
 -- Keymaps Telescope (style VSCode)
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<D-p>", builtin.find_files, { desc = "Rechercher fichiers" })
