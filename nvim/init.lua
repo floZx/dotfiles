@@ -14,14 +14,10 @@ vim.opt.scrolloff = 8
 -- Intégration tmux
 vim.opt.ttimeoutlen = 5
 
--- Fold pour Python (basé sur l'indentation, ouvert par défaut)
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "python",
-  callback = function()
-    vim.opt_local.foldmethod = "indent"
-    vim.opt_local.foldlevel = 99
-  end,
-})
+-- Fold basé sur treesitter (intelligent, par fonction/classe)
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldlevel = 99  -- Ouvert par défaut
 
 -- Recharger automatiquement les fichiers modifiés
 vim.opt.autoread = true
