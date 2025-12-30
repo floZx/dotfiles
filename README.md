@@ -184,6 +184,18 @@ Pour Django : `Space d c` → choisir "Django"
 | `Ctrl+a =` | Égaliser horizontalement |
 | `Ctrl+a +` | Égaliser verticalement |
 
+### Copy mode (historique scrollback)
+
+| Raccourci | Action |
+|-----------|--------|
+| `Ctrl+a v` | Entrer en copy mode |
+| `h/j/k/l` | Naviguer |
+| `/` ou `?` | Rechercher (bas/haut) |
+| `n/N` | Résultat suivant/précédent |
+| `v` | Commencer sélection |
+| `y` | Copier et quitter |
+| `q` | Quitter sans copier |
+
 ---
 
 ## Thème
