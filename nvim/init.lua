@@ -442,3 +442,5 @@ vim.keymap.set("n", "<leader>dl", function() require("dap").run_last() end, { de
 vim.keymap.set("n", "<leader>du", function() require("dapui").toggle() end, { desc = "Toggle debug UI" })
 vim.keymap.set("n", "<leader>dx", function() require("dap").terminate() end, { desc = "Terminate debug" })
 
+-- Effacer la surbrillance de recherche avec Esc
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Effacer surbrillance recherche" })
