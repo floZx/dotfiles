@@ -138,6 +138,14 @@ require("lazy").setup({
             horizontal = { prompt_position = "top" },
           },
         },
+        pickers = {
+          live_grep = {
+            additional_args = { "-g", "*.*", "-g", "!*.csv", "-g", "!*.sql", "-g", "!*.json" }
+          },
+          find_files = {
+            file_ignore_patterns = { "%.pyc$" }
+          },
+        },
       })
       telescope.load_extension("fzf")
     end,
